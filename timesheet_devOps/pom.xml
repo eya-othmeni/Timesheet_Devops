@@ -10,13 +10,14 @@
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>timesheet_devOps</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>timesheet_devOps</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -43,7 +44,9 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 	</dependencies>
+	
 
 	<build>
 		<plugins>
@@ -51,7 +54,16 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			
 		</plugins>
+	  <extensions>
+         <extension>
+             <groupId>org.apache.maven.wagon</groupId>
+             <artifactId>wagon-http</artifactId>
+             <version>2.10</version>
+         </extension>
+     </extensions>
 	</build>
 
 </project>

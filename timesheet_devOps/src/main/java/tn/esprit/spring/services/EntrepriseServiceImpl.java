@@ -15,6 +15,11 @@ import tn.esprit.spring.repository.EntrepriseRepository;
 @Service
 public class EntrepriseServiceImpl implements IEntrepriseService {
 
+	/*mvn clean package -Dmaven.test.skip=true deploy:deploy-file 
+	 * -DgroupId=tn.esprit.spring -DartifactId=timesheet_devOps -Dversion=1.0 
+	 * -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ 
+	 * -Dfile=target/timesheet_devOps-1.0.jar
+	 */
 	@Autowired
     EntrepriseRepository entrepriseRepoistory;
 	@Autowired
@@ -23,11 +28,11 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	private static final Logger l = LogManager.getLogger(EntrepriseServiceImpl.class);
 	
 	@Override
-	public int ajouterEntreprise(Entreprise entreprise) {
+	public Entreprise ajouterEntreprise(Entreprise entreprise) {
 		l.info("In Ajouter Entreprise");
 		entrepriseRepoistory.save(entreprise);
 		l.info("Out Ajouter Entreprise");
-		return entreprise.getId();
+		return entreprise;
 	
 	}
 
@@ -51,6 +56,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 				Departement depManagedEntity = deptRepoistory.findById(depId).orElse(null);
 				
 				if(depManagedEntity != null){
+					l.info("l'entreprise et le departement existent");
 					depManagedEntity.setEntreprise(entrepriseManagedEntity);
 				    deptRepoistory.save(depManagedEntity);}
 				 l.info("Out Affecter Departement à Entreprise");
@@ -97,5 +103,12 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		return entrepriseRepoistory.findById(entrepriseId).orElse(null);
 		
 	}
+	@Override
+	public Departement  getDepartementById(int departementId) {
+		l.info("In Get Departement by id ");
+		return deptRepoistory.findById(departementId).orElse(null);
+		
+	}
+
 
 }

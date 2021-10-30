@@ -31,7 +31,8 @@ public class RestControlEmploye {
 	
 	@Autowired
 	IEmployeService iemployeservice;
-
+    @Autowired
+    IEntrepriseService ientrepriseservice;
 
 	
 	// http://localhost:8081/SpringMVC/servlet/ajouterEmployer

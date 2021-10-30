@@ -111,6 +111,44 @@ public class EmployeServiceImpl implements IEmployeService {
 		contratRepoistory.delete(contratManagedEntity);
 
 	}
+	public int getNombreEmployeJPQL() {
+		return employeRepository.countemp();
+	}
+	
+	public List<String> getAllEmployeNamesJPQL() {
+		return employeRepository.employeNames();
+
+	}
+	
+	public List<Employe> getAllEmployeByEntreprise(Entreprise entreprise) {
+		return employeRepository.getAllEmployeByEntreprisec(entreprise);
+	}
+
+	public void mettreAjourEmailByEmployeIdJPQL(String email, int employeId) {
+		employeRepository.mettreAjourEmailByEmployeIdJPQL(email, employeId);
+
+	}
+	public void deleteAllContratJPQL() {
+         employeRepository.deleteAllContratJPQL();
+	}
+	
+	public float getSalaireByEmployeIdJPQL(int employeId) {
+		return employeRepository.getSalaireByEmployeIdJPQL(employeId);
+	}
+
+	public Double getSalaireMoyenByDepartementId(int departementId) {
+		return employeRepository.getSalaireMoyenByDepartementId(departementId);
+	}
+	
+	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
+			Date dateFin) {
+		return timesheetRepository.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
+	}
+
+	public List<Employe> getAllEmployes() {
+				return (List<Employe>) employeRepository.findAll();
+	}
+
 
 
 }

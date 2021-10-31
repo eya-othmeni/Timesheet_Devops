@@ -14,7 +14,7 @@ public interface IEmployeService {
 	
 	public int ajouterEmploye(Employe employe);
 	public void mettreAjourEmailByEmployeId(String email, int employeId);
-	public void affecterEmployeADepartement(int employeId, int depId);
+	public List<Employe> getAllEmployes();
 	public void desaffecterEmployeDuDepartement(int employeId, int depId);
 	public int ajouterContrat(Contrat contrat);
 	public void affecterContratAEmploye(int contratId, int employeId);
@@ -28,7 +28,7 @@ public interface IEmployeService {
 	public void deleteAllContratJPQL();
 	public float getSalaireByEmployeIdJPQL(int employeId);
 	public Double getSalaireMoyenByDepartementId(int departementId);
-	public List<Employe> getAllEmployes();
+	public void affecterEmployeADepartement(int employeId, int depId); 
 	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, 
 	Date dateDebut, Date dateFin);
 	
